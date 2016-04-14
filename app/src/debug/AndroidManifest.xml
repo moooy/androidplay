@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    package="evosoft.example.com.androidplay"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <application
+        tools:strict="android:name"
+        android:name="evosoft.example.com.androidplay.MyApplication"/>
+</manifest>
