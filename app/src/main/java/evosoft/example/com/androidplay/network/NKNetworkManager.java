@@ -4,7 +4,7 @@ import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import java.util.concurrent.TimeUnit;
 
-import evosoft.example.com.androidplay.common.constant.NetworkConfig;
+import evosoft.example.com.androidplay.constant.NetworkConfig;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

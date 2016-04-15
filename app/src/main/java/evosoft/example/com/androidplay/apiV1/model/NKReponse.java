@@ -1,11 +1,12 @@
-package evosoft.example.com.androidplay.model;
+package evosoft.example.com.androidplay.apiV1.model;
+
+import android.support.annotation.Nullable;
 
 /**
  * @ author yaocl
- * Created on 2016/4/14.
+ * Created on 2016/4/15.
  */
-public class Message<T> {
-
+public class NKReponse<T> {
 
     /**
      * errorCode : 0
@@ -17,9 +18,10 @@ public class Message<T> {
     private String errorMsg;
     private T value;
 
-    public Message(String errorCode, String errorMsg) {
+    public NKReponse(String errorCode, @Nullable String errorMsg, @Nullable T value) {
         this.errorCode = errorCode;
         this.errorMsg = errorMsg;
+        this.value = value;
     }
 
     public String getErrorCode() {
@@ -36,5 +38,17 @@ public class Message<T> {
 
     public void setErrorMsg(String errorMsg) {
         this.errorMsg = errorMsg;
+    }
+
+    public T getValue() {
+        return value;
+    }
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public boolean isSuccess(){
+        return errorCode.equals("0");
     }
 }
