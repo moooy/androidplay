@@ -6,6 +6,7 @@ package evosoft.example.com.androidplay.constant;
  */
 public interface NetworkConfig {
     String BASE_URL = "http://192.168.11.101:8099";
+    String URL_GANK_BASE = "http://gank.io/api/";
 
     String URL_CHECKUSER  = BASE_URL+"/adai/rest/account/repeat/check";
 }

@@ -2,12 +2,14 @@ package evosoft.example.com.androidplay.apiV1;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import evosoft.example.com.androidplay.MyApplication;
 import evosoft.example.com.androidplay.common.utils.NetworkUtil;
 import evosoft.example.com.androidplay.constant.NetworkConfig;
+import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Response;
@@ -43,7 +45,7 @@ public class ApiHttpClient {
                 if (NetworkUtil.isNetworkAvailable(MyApplication.getInstance().getApplicationContext())) {
                     int maxAge = 60;
                     return originalResponse.newBuilder()
-                            .header("Cache-Control","public,only-if-cached,max-age"+maxAge)
+                            .header("Cache-Control","public,only-if-cached,max-age="+maxAge)
                             .build();
                 }else {
                     /**
@@ -51,23 +53,30 @@ public class ApiHttpClient {
                      */
                     int maxStale = 60*60*24*28;
                     return originalResponse.newBuilder()
-                            .header("Cache-Control","public,only-if-cached,max-stale"+maxStale)
+                            .header("Cache-Control","public,only-if-cached,max-stale="+maxStale)
                             .build();
                 }
             }
         };
 
+        //setup cache
+        File httpCacheDirectory = new File(MyApplication.getInstance().getCacheDir(), "responses");
+        int cacheSize = 10 * 1024 * 1024; // 10 MiB
+        Cache cache = new Cache(httpCacheDirectory, cacheSize);
+
        mOkHttpClient = new OkHttpClient().newBuilder()
                .retryOnConnectionFailure(true)
                .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+               .addNetworkInterceptor(interceptor)
                .addNetworkInterceptor(new StethoInterceptor())
+               .cache(cache)
                .addInterceptor(mHttpLoggingInterceptor)
                .build();
 
         mRetrofit = new Retrofit.Builder()
                 .client(mOkHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(NetworkConfig.BASE_URL)
+                .baseUrl(NetworkConfig.URL_GANK_BASE)
                 .build();
     }
 
