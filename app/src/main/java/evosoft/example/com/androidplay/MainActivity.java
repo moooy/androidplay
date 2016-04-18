@@ -1,9 +1,12 @@
 package evosoft.example.com.androidplay;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import evosoft.example.com.androidplay.apiV1.ApiErrorHelper;
 import evosoft.example.com.androidplay.apiV1.ApiFactory;
@@ -22,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Uri uri = Uri.parse("https://raw.githubusercontent.com/facebook/fresco/gh-pages/static/fresco-logo.png");
+        SimpleDraweeView draweeView = (SimpleDraweeView) findViewById(R.id.my_image_view);
+        draweeView.setImageURI(uri);
 
     }
 
