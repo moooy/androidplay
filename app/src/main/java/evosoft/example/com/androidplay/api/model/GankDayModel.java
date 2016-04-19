@@ -1,4 +1,4 @@
-package evosoft.example.com.androidplay.apiV1.model;
+package evosoft.example.com.androidplay.api.model;
 
 import java.util.List;
 

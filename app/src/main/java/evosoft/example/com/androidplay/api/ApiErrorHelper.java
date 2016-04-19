@@ -1,9 +1,9 @@
-package evosoft.example.com.androidplay.apiV1;
+package evosoft.example.com.androidplay.api;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 
-import evosoft.example.com.androidplay.apiV1.model.NKApiError;
+import evosoft.example.com.androidplay.api.model.NKApiError;
 import okhttp3.ResponseBody;
 import retrofit2.Converter;
 import retrofit2.Response;

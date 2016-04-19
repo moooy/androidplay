@@ -11,7 +11,7 @@ public class ApiFactory {
 
     public static NKUserApi getNKUserApi(){
         if (mNKUserApi == null) {
-            mNKUserApi = new NKUserApi();
+            mNKUserApi = ApiHttpClient.getInstance().createApi(NKUserApi.class);
         }
         return mNKUserApi;
     }

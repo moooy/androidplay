@@ -1,4 +1,4 @@
-package evosoft.example.com.androidplay.common.utils;
+package evosoft.example.com.androidplay.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
